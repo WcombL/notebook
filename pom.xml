@@ -15,6 +15,7 @@
         <module>JDBC-Relational</module>
         <module>Upload-file</module>
         <module>demo-uploadfile</module>
+        <module>message-redis</module>
     </modules>
 
     <parent>
