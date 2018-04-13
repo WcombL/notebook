@@ -16,6 +16,7 @@
         <module>Upload-file</module>
         <module>demo-uploadfile</module>
         <module>message-redis</module>
+        <module>Algorithm</module>
     </modules>
 
     <parent>
