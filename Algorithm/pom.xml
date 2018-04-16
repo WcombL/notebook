@@ -23,6 +23,13 @@
 
     <dependencies>
         <dependency>
+            <groupId>com.zrkj</groupId>
+            <artifactId>zrkj</artifactId>
+            <version>4.0</version>
+            <scope>system</scope>
+            <systemPath>${project.basedir}/lib/algs4.jar</systemPath>
+        </dependency>
+        <dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
             <version>4.11</version>

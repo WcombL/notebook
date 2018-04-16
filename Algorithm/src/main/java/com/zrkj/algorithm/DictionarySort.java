@@ -1,4 +1,4 @@
-package com.zrkj;
+package com.zrkj.algorithm;
 
 import java.util.Arrays;
 
