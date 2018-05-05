@@ -20,6 +20,9 @@
         <module>message-redis</module>
         <module>Algorithm</module>
         <module>source-read</module>
+        <module>java-study</module>
+        <module>jwt-auth</module>
+        <module>Secury-Web</module>
     </modules>
 
     <parent>
