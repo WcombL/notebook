@@ -28,11 +28,13 @@ package java.util;
 import java.util.function.UnaryOperator;
 
 /**
+ * 有序集合，通过索引(从0开始)访问元素
  * An ordered collection (also known as a <i>sequence</i>).  The user of this
  * interface has precise control over where in the list each element is
  * inserted.  The user can access elements by their integer index (position in
  * the list), and search for elements in the list.<p>
  *
+ * list 允许元素重复，允许多个null元素
  * Unlike sets, lists typically allow duplicate elements.  More formally,
  * lists typically allow pairs of elements <tt>e1</tt> and <tt>e2</tt>
  * such that <tt>e1.equals(e2)</tt>, and they typically allow multiple
@@ -112,6 +114,7 @@ public interface List<E> extends Collection<E> {
     // Query Operations
 
     /**
+     * 返回list元素数量，如果超过Integer.MAX_VALUE则返回Integer.MAX_VALUE
      * Returns the number of elements in this list.  If this list contains
      * more than <tt>Integer.MAX_VALUE</tt> elements, returns
      * <tt>Integer.MAX_VALUE</tt>.
@@ -121,6 +124,8 @@ public interface List<E> extends Collection<E> {
     int size();
 
     /**
+     * 没有元素返回true
+     * 
      * Returns <tt>true</tt> if this list contains no elements.
      *
      * @return <tt>true</tt> if this list contains no elements
@@ -128,6 +133,7 @@ public interface List<E> extends Collection<E> {
     boolean isEmpty();
 
     /**
+     * 当且仅当集合包含至少一个特定元素，返回true
      * Returns <tt>true</tt> if this list contains the specified element.
      * More formally, returns <tt>true</tt> if and only if this list contains
      * at least one element <tt>e</tt> such that
@@ -356,7 +362,8 @@ public interface List<E> extends Collection<E> {
     boolean removeAll(Collection<?> c);
 
     /**
-     * Retains only the elements in this list that are contained in the
+     * 保留在指定集合中的元素，其余元素删除
+     * Retains(保留) only the elements in this list that are contained in the
      * specified collection (optional operation).  In other words, removes
      * from this list all of its elements that are not contained in the
      * specified collection.
@@ -378,6 +385,7 @@ public interface List<E> extends Collection<E> {
     boolean retainAll(Collection<?> c);
 
     /**
+     * 每个元素应用一次指定的操作
      * Replaces each element of this list with the result of applying the
      * operator to that element.  Errors or runtime exceptions thrown by
      * the operator are relayed to the caller.

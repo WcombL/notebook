@@ -31,6 +31,7 @@ import java.util.function.UnaryOperator;
 import sun.misc.SharedSecrets;
 
 /**
+ * 动态扩容
  * Resizable-array implementation of the <tt>List</tt> interface.  Implements
  * all optional list operations, and permits all elements, including
  * <tt>null</tt>.  In addition to implementing the <tt>List</tt> interface,
@@ -187,6 +188,7 @@ public class ArrayList<E> extends AbstractList<E>
     }
 
     /**
+     * 去除空元素
      * Trims the capacity of this <tt>ArrayList</tt> instance to be the
      * list's current size.  An application can use this operation to minimize
      * the storage of an <tt>ArrayList</tt> instance.
@@ -201,6 +203,7 @@ public class ArrayList<E> extends AbstractList<E>
     }
 
     /**
+     * 扩容数组
      * Increases the capacity of this <tt>ArrayList</tt> instance, if
      * necessary, to ensure that it can hold at least the number of elements
      * specified by the minimum capacity argument.
@@ -248,6 +251,7 @@ public class ArrayList<E> extends AbstractList<E>
     private static final int MAX_ARRAY_SIZE = Integer.MAX_VALUE - 8;
 
     /**
+     * 具体扩容
      * Increases the capacity to ensure that it can hold at least the
      * number of elements specified by the minimum capacity argument.
      *
@@ -256,6 +260,7 @@ public class ArrayList<E> extends AbstractList<E>
     private void grow(int minCapacity) {
         // overflow-conscious code
         int oldCapacity = elementData.length;
+        // 按照0.5倍进行扩容
         int newCapacity = oldCapacity + (oldCapacity >> 1);
         if (newCapacity - minCapacity < 0)
             newCapacity = minCapacity;
@@ -345,6 +350,7 @@ public class ArrayList<E> extends AbstractList<E>
     }
 
     /**
+     * 浅克隆
      * Returns a shallow copy of this <tt>ArrayList</tt> instance.  (The
      * elements themselves are not copied.)
      *
@@ -745,6 +751,7 @@ public class ArrayList<E> extends AbstractList<E>
     }
 
     /**
+     * 序列化
      * Save the state of the <tt>ArrayList</tt> instance to a stream (that
      * is, serialize it).
      *
@@ -772,6 +779,7 @@ public class ArrayList<E> extends AbstractList<E>
     }
 
     /**
+     * 反序列化
      * Reconstitute the <tt>ArrayList</tt> instance from a stream (that is,
      * deserialize it).
      */

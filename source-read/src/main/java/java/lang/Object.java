@@ -26,6 +26,9 @@
 package java.lang;
 
 /**
+ * 基类
+ * 所有类都是该类的子类，包括数组
+ *
  * Class {@code Object} is the root of the class hierarchy.
  * Every class has {@code Object} as a superclass. All objects,
  * including arrays, implement the methods of this class.
@@ -63,6 +66,13 @@ public class Object {
     public final native Class<?> getClass();
 
     /**
+     * 主要为Map接口提供
+     *
+     * 对于同一个对象无论调用该方法多少次，都返回同一个值
+     *
+     * 如果两个对象调用equals相等，那么调用hashcode必须返回同一个值，反之不成立
+     *
+     *
      * Returns a hash code value for the object. This method is
      * supported for the benefit of hash tables such as those provided by
      * {@link java.util.HashMap}.
@@ -100,6 +110,12 @@ public class Object {
     public native int hashCode();
 
     /**
+     * 必须满足
+     * 自身性
+     * 交换性
+     * 传递性
+     * 对于任意对象对null都返回false
+     *
      * Indicates whether some other object is "equal to" this one.
      * <p>
      * The {@code equals} method implements an equivalence relation
@@ -150,6 +166,8 @@ public class Object {
     }
 
     /**
+     * 深克隆、浅克隆
+     *
      * Creates and returns a copy of this object.  The precise meaning
      * of "copy" may depend on the class of the object. The general
      * intent is that, for any object {@code x}, the expression:
