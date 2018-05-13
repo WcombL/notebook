@@ -29,7 +29,10 @@ import java.util.function.Consumer;
 import sun.misc.SharedSecrets;
 
 /**
+ * 一个无界基于优先堆的优先队列
  * An unbounded priority {@linkplain Queue queue} based on a priority heap.
+ * 里面的元素根据自然元素进行排序或提供指定排序方式进行排序。
+ * 优先队列不允许存在null元素，也不允许存在不能排序的对象
  * The elements of the priority queue are ordered according to their
  * {@linkplain Comparable natural ordering}, or by a {@link Comparator}
  * provided at queue construction time, depending on which constructor is
@@ -38,7 +41,7 @@ import sun.misc.SharedSecrets;
  * insertion of non-comparable objects (doing so may result in
  * {@code ClassCastException}).
  *
- * <p>The <em>head</em> of this queue is the <em>least</em> element
+ * <p>The <em>head</em> of this queue is the <em>least(最小)</em> element
  * with respect to the specified ordering.  If multiple elements are
  * tied for least value, the head is one of those elements -- ties are
  * broken arbitrarily.  The queue retrieval operations {@code poll},
@@ -267,6 +270,7 @@ public class PriorityQueue<E> extends AbstractQueue<E>
     }
 
     /**
+     * 根据集合初始化优先队列
      * Initializes queue array with elements from the given Collection.
      *
      * @param c the collection
@@ -285,6 +289,7 @@ public class PriorityQueue<E> extends AbstractQueue<E>
     private static final int MAX_ARRAY_SIZE = Integer.MAX_VALUE - 8;
 
     /**
+     * 扩容
      * Increases the capacity of the array.
      *
      * @param minCapacity the desired minimum capacity
@@ -292,10 +297,12 @@ public class PriorityQueue<E> extends AbstractQueue<E>
     private void grow(int minCapacity) {
         int oldCapacity = queue.length;
         // Double size if small; else grow by 50%
+        // 如果容量小于64扩容两倍，否则扩容1.5倍
         int newCapacity = oldCapacity + ((oldCapacity < 64) ?
                                          (oldCapacity + 2) :
                                          (oldCapacity >> 1));
         // overflow-conscious code
+        // 预处理超过int最大值或内存溢出
         if (newCapacity - MAX_ARRAY_SIZE > 0)
             newCapacity = hugeCapacity(minCapacity);
         queue = Arrays.copyOf(queue, newCapacity);
@@ -310,6 +317,7 @@ public class PriorityQueue<E> extends AbstractQueue<E>
     }
 
     /**
+     * 新增
      * Inserts the specified element into this priority queue.
      *
      * @return {@code true} (as specified by {@link Collection#add})
@@ -342,6 +350,7 @@ public class PriorityQueue<E> extends AbstractQueue<E>
         if (i == 0)
             queue[0] = e;
         else
+            // 默认在末尾加元素，然后经过比较器进行调整
             siftUp(i, e);
         return true;
     }
@@ -664,12 +673,25 @@ public class PriorityQueue<E> extends AbstractQueue<E>
 
     @SuppressWarnings("unchecked")
     private void siftUpUsingComparator(int k, E x) {
+        // k 添加位置 x 添加元素
+        // 使用如下数据结构：完全满二叉树
+        // 对于当前节点 i(从0开始)
+        // 父：(i-1)/2
+        // 左子：i*2+1 = 2i+1
+        // 右子：(i+1)*2+1 = 2i+3
+
+        // i 从1开始
+        // 父：i/2
+        // 左子：2*i
+        // 右子：2*i+1
         while (k > 0) {
             int parent = (k - 1) >>> 1;
             Object e = queue[parent];
             if (comparator.compare(x, (E) e) >= 0)
                 break;
+            // 如果父节点值比当前值大，则移动父节点值到当前节点上
             queue[k] = e;
+            // 继续向上查找直到找打父节点比当前值小，记录下该位置，并在该位置插入当前值
             k = parent;
         }
         queue[k] = x;

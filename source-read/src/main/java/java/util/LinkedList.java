@@ -28,6 +28,8 @@ package java.util;
 import java.util.function.Consumer;
 
 /**
+ * 双端队列实现
+ * 
  * Doubly-linked list implementation of the {@code List} and {@code Deque}
  * interfaces.  Implements all optional list operations, and permits all
  * elements (including {@code null}).
@@ -36,6 +38,7 @@ import java.util.function.Consumer;
  * list.  Operations that index into the list will traverse the list from
  * the beginning or the end, whichever is closer to the specified index.
  *
+ * 不是同步，如果有多个线程操作，必须进行同步
  * <p><strong>Note that this implementation is not synchronized.</strong>
  * If multiple threads access a linked list concurrently, and at least
  * one of the threads modifies the list structurally, it <i>must</i> be
@@ -61,6 +64,7 @@ import java.util.function.Consumer;
  * risking arbitrary, non-deterministic behavior at an undetermined
  * time in the future.
  *
+ * 快速失败操作
  * <p>Note that the fail-fast behavior of an iterator cannot be guaranteed
  * as it is, generally speaking, impossible to make any hard guarantees in the
  * presence of unsynchronized concurrent modification.  Fail-fast iterators
@@ -79,7 +83,7 @@ import java.util.function.Consumer;
  * @since 1.2
  * @param <E> the type of elements held in this collection
  */
-
+// 实现了Deque接口，Deque继承了Queue接口
 public class LinkedList<E>
     extends AbstractSequentialList<E>
     implements List<E>, Deque<E>, Cloneable, java.io.Serializable
@@ -120,21 +124,28 @@ public class LinkedList<E>
     }
 
     /**
+     * 插入首节点
      * Links e as first element.
      */
     private void linkFirst(E e) {
         final Node<E> f = first;
+        // 建立一个节点使后指针指向原首节点
         final Node<E> newNode = new Node<>(null, e, f);
+        // 更改首节点为当前节点
         first = newNode;
+        // 如果首节点为空则指向当前节点为尾节点，即当前节点是链表中的第一个节点
         if (f == null)
             last = newNode;
         else
+            // 是原首节点的前驱指向当前节点
             f.prev = newNode;
         size++;
+        // 用于进行快速失败操作
         modCount++;
     }
 
     /**
+     * 插入尾节点
      * Links e as last element.
      */
     void linkLast(E e) {
@@ -150,6 +161,7 @@ public class LinkedList<E>
     }
 
     /**
+     * 在节点前插入节点，类比linkFirst
      * Inserts element e before non-null Node succ.
      */
     void linkBefore(E e, Node<E> succ) {
@@ -166,6 +178,8 @@ public class LinkedList<E>
     }
 
     /**
+     * 删除当前首节点
+     * 
      * Unlinks non-null first node f.
      */
     private E unlinkFirst(Node<E> f) {
@@ -173,6 +187,7 @@ public class LinkedList<E>
         final E element = f.item;
         final Node<E> next = f.next;
         f.item = null;
+        // 明确标记为null是为了让GC快速回收
         f.next = null; // help GC
         first = next;
         if (next == null)
@@ -185,6 +200,7 @@ public class LinkedList<E>
     }
 
     /**
+     * 删除尾节点
      * Unlinks non-null last node l.
      */
     private E unlinkLast(Node<E> l) {
@@ -204,6 +220,8 @@ public class LinkedList<E>
     }
 
     /**
+     * 删除节点
+     * 
      * Unlinks non-null node x.
      */
     E unlink(Node<E> x) {
@@ -327,6 +345,7 @@ public class LinkedList<E>
     }
 
     /**
+     * 默认在末尾添加元素
      * Appends the specified element to the end of this list.
      *
      * <p>This method is equivalent to {@link #addLast}.
@@ -527,6 +546,7 @@ public class LinkedList<E>
     }
 
     /**
+     * 检查索引是否合法，如果合法这表示在索引位置存在一个元素
      * Tells if the argument is the index of an existing element.
      */
     private boolean isElementIndex(int index) {
@@ -534,6 +554,7 @@ public class LinkedList<E>
     }
 
     /**
+     * 检查索引是否合法，表示在该索引位置可以添加一个元素
      * Tells if the argument is the index of a valid position for an
      * iterator or an add operation.
      */
@@ -582,6 +603,8 @@ public class LinkedList<E>
     // Search Operations
 
     /**
+     * 查询指定元素所在索引
+     * 
      * Returns the index of the first occurrence of the specified element
      * in this list, or -1 if this list does not contain the element.
      * More formally, returns the lowest index {@code i} such that
@@ -640,6 +663,7 @@ public class LinkedList<E>
     }
 
     // Queue operations.
+    // 队列操作
 
     /**
      * Retrieves, but does not remove, the head (first element) of this list.
@@ -967,6 +991,7 @@ public class LinkedList<E>
         }
     }
 
+    // 节点数据存储
     private static class Node<E> {
         E item;
         Node<E> next;

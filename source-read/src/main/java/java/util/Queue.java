@@ -36,6 +36,7 @@
 package java.util;
 
 /**
+ * 队列
  * A collection designed for holding elements prior to processing.
  * Besides basic {@link java.util.Collection Collection} operations,
  * queues provide additional insertion, extraction, and inspection
@@ -143,6 +144,9 @@ package java.util;
  */
 public interface Queue<E> extends Collection<E> {
     /**
+     * 添加
+     * 如果没有空间可用 抛出异常
+     * 
      * Inserts the specified element into this queue if it is possible to do so
      * immediately without violating capacity restrictions, returning
      * {@code true} upon success and throwing an {@code IllegalStateException}
@@ -162,6 +166,9 @@ public interface Queue<E> extends Collection<E> {
     boolean add(E e);
 
     /**
+     * 新增
+     * 新增失败不会抛出异常
+     * 
      * Inserts the specified element into this queue if it is possible to do
      * so immediately without violating capacity restrictions.
      * When using a capacity-restricted queue, this method is generally
@@ -199,6 +206,8 @@ public interface Queue<E> extends Collection<E> {
     E poll();
 
     /**
+     * 获取元素，元素不会被删除
+     * 
      * Retrieves, but does not remove, the head of this queue.  This method
      * differs from {@link #peek peek} only in that it throws an exception
      * if this queue is empty.
