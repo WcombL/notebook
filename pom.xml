@@ -23,6 +23,7 @@
         <module>java-study</module>
         <module>jwt-auth</module>
         <module>Secury-Web</module>
+        <module>redis-Lettuce</module>
     </modules>
 
     <parent>
