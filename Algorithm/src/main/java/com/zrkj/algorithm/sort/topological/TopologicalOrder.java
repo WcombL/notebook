@@ -1,4 +1,4 @@
-package com.zrkj.algorithm.sort;
+package com.zrkj.algorithm.sort.topological;
 
 /**
  * 拓扑排序 Topological Order ,将一个有向无环图(Directed Acyclic Graph : DAG)进行排序进而得到一个有序的线性图
@@ -15,4 +15,6 @@ package com.zrkj.algorithm.sort;
  *   注：顶点A没有依赖顶点，是指不存在以A为终点的边。
  */
 public class TopologicalOrder {
+
+
 }
