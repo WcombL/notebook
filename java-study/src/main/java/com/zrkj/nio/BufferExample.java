@@ -46,7 +46,6 @@ public class BufferExample {
         // 读取数据到字节数组
         byteBuffer.get(bytes);
         // 输出数据
-        System.out.println(new String(bytes, 0, bytes.length));
 
         System.out.println("get完之后-->limit--->" + byteBuffer.limit());
         System.out.println("get完之后-->position--->" + byteBuffer.position());
