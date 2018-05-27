@@ -3,10 +3,10 @@ package com.zrkj.collections;
 /**
  *  自定 Comparable
  */
-public class ComparableName implements Comparable<ComparableName> {
+public class Name implements Comparable<Name> {
     private final String firstName, lastName;
 
-    public ComparableName(String firstName, String lastName) {
+    public Name(String firstName, String lastName) {
         if (firstName == null || lastName == null)
             throw new NullPointerException();
         this.firstName = firstName;
@@ -17,9 +17,9 @@ public class ComparableName implements Comparable<ComparableName> {
     public String lastName()  { return lastName;  }
 
     public boolean equals(Object o) {
-        if (!(o instanceof ComparableName))
+        if (!(o instanceof Name))
             return false;
-        ComparableName n = (ComparableName) o;
+        Name n = (Name) o;
         return n.firstName.equals(firstName) && n.lastName.equals(lastName);
     }
 
@@ -32,7 +32,7 @@ public class ComparableName implements Comparable<ComparableName> {
     }
 
     @Override
-    public int compareTo(ComparableName n) {
+    public int compareTo(Name n) {
         int lastCmp = lastName.compareTo(n.lastName);
         return (lastCmp != 0 ? lastCmp : firstName.compareTo(n.firstName));
     }
