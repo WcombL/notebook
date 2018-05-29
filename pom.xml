@@ -24,6 +24,7 @@
         <module>jwt-auth</module>
         <module>Secury-Web</module>
         <module>redis-Lettuce</module>
+        <module>Spring-MVC</module>
     </modules>
 
     <parent>
