@@ -37,6 +37,8 @@ package java.util.concurrent.locks;
 import java.util.concurrent.TimeUnit;
 
 /**
+ * 锁实现提供能被synchronized方法和语句观察到的广泛的锁操作。灵活的结构化，可以有不桶的属性
+ * 并可能支持多个关联的Condition对象
  * {@code Lock} implementations provide more extensive locking
  * operations than can be obtained using {@code synchronized} methods
  * and statements.  They allow more flexible structuring, may have

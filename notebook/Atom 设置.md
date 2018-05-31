@@ -75,3 +75,10 @@ pigments是项目文件中，样式显色显示的的插件
 ### file-icons
 
 ### atom-ide-ui
+
+### docblockr
+
+注释
+
+### platformio-ide-terminal
+命令行
