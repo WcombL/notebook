@@ -25,6 +25,7 @@
         <module>Secury-Web</module>
         <module>redis-Lettuce</module>
         <module>Spring-MVC</module>
+        <module>XACML</module>
     </modules>
 
     <parent>

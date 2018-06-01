@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Policy
+        xmlns="urn:oasis:names:tc:xacml:3.0:core:schema:wd-17"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="urn:oasis:names:tc:xacml:3.0:schema:os
+        http://docs.oasis-open.org/xacml/FIXME.xsd"
+        PolicyId="urn:oasis:names:tc:xacml:3.0:example:SimplePolicy1"
+        Version="1.0"
+        RuleCombiningAlgId="identifier:rule-combining-algorithm:deny-overrides">
+
+
+</Policy>
