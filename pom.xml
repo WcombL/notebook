@@ -5,7 +5,7 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>com.zrkj</groupId>
-    <artifactId>spring-guides</artifactId>
+    <artifactId>notebook-code</artifactId>
     <packaging>pom</packaging>
     <version>1.0-SNAPSHOT</version>
     <modules>
@@ -19,7 +19,6 @@
         <module>demo-uploadfile</module>
         <module>message-redis</module>
         <module>Algorithm</module>
-        <module>source-read</module>
         <module>java-study</module>
         <module>jwt-auth</module>
         <module>Secury-Web</module>
