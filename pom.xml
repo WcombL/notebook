@@ -25,6 +25,7 @@
         <module>redis-Lettuce</module>
         <module>Spring-MVC</module>
         <module>XACML</module>
+        <module>RabbitMQ</module>
     </modules>
 
     <parent>
