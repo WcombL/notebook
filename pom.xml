@@ -26,6 +26,7 @@
         <module>Spring-MVC</module>
         <module>XACML</module>
         <module>RabbitMQ</module>
+        <module>RabbitMQ-Spring</module>
     </modules>
 
     <parent>

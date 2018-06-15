@@ -1,0 +1,23 @@
+spring:
+  profiles:
+    active: usage_message
+  rabbitmq:
+    host: localhost
+    username: guest
+    password: guest
+
+
+logging:
+  level:
+    com: info
+
+
+server:
+  port: 8080
+
+
+
+
+tutorial:
+  client:
+    duration: 10000
